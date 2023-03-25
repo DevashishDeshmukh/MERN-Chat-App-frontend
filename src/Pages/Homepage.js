@@ -1,7 +1,5 @@
-import React from "react";
 import {
   Box,
-  Center,
   Container,
   Tab,
   TabList,
@@ -10,48 +8,54 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 
-const Homepage = () => {
+function Homepage() {
+  const history = useHistory();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (user) history.push("/chats");
+  }, [history]);
+
   return (
     <Container maxW="xl" centerContent>
       <Box
         d="flex"
-        justifyContent="centre"
+        justifyContent="center"
         p={3}
-        bg={"white"}
+        bg="white"
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Center>
-          <Text fontSize="4xl" fontFamily="Work sans " color="Black">
-            Talk-A-Tive
-          </Text>
-        </Center>
+        <Text fontSize="4xl" fontFamily="Work sans">
+          Talk-A-Tive
+        </Text>
       </Box>
-
-
-      <Box bg="white" w="100%" p={4} color="black" borderRadius="lg" borderWidth="1px">
-        <Tabs variant="soft-rounded" >
+      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+        <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
-            <Tab width="50%">Login</Tab>
-            <Tab width="50%">Sign Up</Tab>
+            <Tab>Login</Tab>
+            <Tab>Sign Up</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Login/>
+              <Login />
             </TabPanel>
             <TabPanel>
-              <Signup/>
+              <Signup />
             </TabPanel>
           </TabPanels>
         </Tabs>
       </Box>
     </Container>
   );
-};
+}
 
 export default Homepage;

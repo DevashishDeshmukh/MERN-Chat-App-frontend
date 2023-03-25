@@ -1,17 +1,152 @@
-import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+  VStack,
+  useToast,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Signup = () => {
-  const [show, setShow] = useState(false);  
+  const [show, setShow] = useState(false);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmpassword, setConfirmpassword] = useState();
   const [pic, setPic] = useState();
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const history = useHistory();
 
   const handleClick = () => setShow(!show);
-  const postDetails = (pics) =>{}; 
-  const submitHandler = () =>{};
+  const postDetails = async (pics) => {
+    setLoading(true);
+    if (pics === undefined) {
+      toast({
+        title: "Please select an Image",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const formData = new FormData();
+      formData.append("file", pics);
+      formData.append("upload_preset", "chat-app");
+      // formData.append("cloud_name", "dy56v1gpx");
+      let URL = "";
+      await axios
+        .post(
+          "https://api.cloudinary.com/v1_1/dy56v1gpx/image/upload",
+          formData
+        )
+        .then((res) => {
+          URL = res.data["secure_url"];
+          // console.log(res.data);
+          let urlString = URL.toString();
+          setPic(urlString);
+          setLoading(false);
+        })
+
+        //   TO USED AS ALTERNATE for Above code given by tutorial
+
+        // fetch("https://api.cloudinary.com/v1_1/dy56v1gpx/image/upload", {
+        //   method: "post",
+        //   body: formData,
+        // })
+        //   .then((res) =>{
+        //     data=res.data["secure_url"];
+        //     setPic(data.toString());
+        //     setLoading(false);
+        //   })
+        // .then((data) => {
+        //   setPic(data.secure_url.toString());
+        //   setLoading(false);
+        // })
+
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    } else {
+      toast({
+        title: "Please select an Image",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+  };
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!name || !email || !password || !confirmpassword) {
+      toast({
+        title: "Please fill all fields",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+    if (password !== confirmpassword) {
+      toast({
+        title: "Password do not match",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "/api/user",
+        { name, email, password, pic },
+        config
+      );
+      // console.log(data);
+      toast({
+        title: "Registration Successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+      history.push("/chats");
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+    }
+  };
 
   return (
     <VStack color="black" spacing="5px">
@@ -32,55 +167,52 @@ const Signup = () => {
       <FormControl id="password" isRequired>
         <FormLabel>Password</FormLabel>
         <InputGroup>
-        <Input
-        type={show ? "text" : "password"}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        /> 
-        <InputRightElement  width="4.5rem">
+          <Input
+            type={show ? "text" : "password"}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
-                {show ? "Hide" : "Show"}
-            </Button> 
-        </InputRightElement>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
         </InputGroup>
-        
       </FormControl>
       <FormControl id="password" isRequired>
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup>
-        <Input
-        type={show ? "text" : "password"}
-          placeholder="Confirm password"
-          onChange={(e) => setConfirmpassword(e.target.value)}
-        /> 
-        <InputRightElement  width="4.5rem">
+          <Input
+            type={show ? "text" : "password"}
+            placeholder="Confirm password"
+            onChange={(e) => setConfirmpassword(e.target.value)}
+          />
+          <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
-                {show ? "Hide" : "Show"}
-            </Button> 
-        </InputRightElement>
+              {show ? "Hide" : "Show"}
+            </Button>
+          </InputRightElement>
         </InputGroup>
       </FormControl>
-
-      
 
       <FormControl id="pic" isRequired>
         <FormLabel>Upload your Picture</FormLabel>
         <Input
-        type="file"
-        p={1.5}
-        accept="image/*"
+          type="file"
+          p={1.5}
+          accept="image/*"
           onChange={(e) => postDetails(e.target.files[0])}
-        /> 
+        />
       </FormControl>
-      <Button 
-      colorScheme={"blue"}
-      width="100%"
-      style={{marginTop:15}}
-      onClick={submitHandler}
+      <Button
+        colorScheme={"blue"}
+        width="100%"
+        style={{ marginTop: 15 }}
+        onClick={submitHandler}
+        isLoading={loading}
       >
         Sign Up
       </Button>
-      
     </VStack>
   );
 };
