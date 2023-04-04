@@ -92,8 +92,7 @@ function SideDrawer() {
     }
   };
 
-  const accessChat = async (userId) => {
-    console.log(userId);
+  const accessChat = async (userId) => { 
 
     try {
       setLoadingChat(true);
