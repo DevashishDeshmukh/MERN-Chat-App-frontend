@@ -18,7 +18,7 @@ const MyChats = (fetchAgain) => {
   const toast = useToast();
 
   const fetchChats = async () => {
-    console.log(user._id);
+    // console.log(user._id);
     try {
       const config = {
         headers: {
@@ -27,7 +27,7 @@ const MyChats = (fetchAgain) => {
       };
 
       const { data } = await axios.get("/api/chat", config);
-      console.log(data);
+      // console.log(data);
       setChats(data);
     } catch (error) {
       toast({
