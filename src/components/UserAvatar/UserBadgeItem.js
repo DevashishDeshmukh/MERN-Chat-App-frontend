@@ -1,44 +1,25 @@
-import { Avatar } from "@chakra-ui/avatar";
-import { Box, Text } from "@chakra-ui/layout";
-import { ChatState } from "../../Context/ChatProvider";
+import { CloseIcon } from "@chakra-ui/icons";
+import { Badge } from "@chakra-ui/layout";
 
-const UserListItem = ({ handleFunction }) => {
-  const { user } = ChatState();
-
+const UserBadgeItem = ({ user, handleFunction, admin }) => {
   return (
-    <Box
-      onClick={handleFunction}
-      cursor="pointer"
-      bg="#E8E8E8"
-      _hover={{
-        background: "#38B2AC",
-        color: "white",
-      }}
-      w="100%"
-      d="flex"
-      alignItems="center"
-      color="black"
-      px={3}
-      py={2}
-      mb={2}
+    <Badge
+      px={2}
+      py={1}
       borderRadius="lg"
+      m={1}
+      mb={2}
+      variant="solid"
+      fontSize={12}
+      colorScheme="purple"
+      cursor="pointer"
+      onClick={handleFunction}
     >
-      <Avatar
-        mr={2}
-        size="sm"
-        cursor="pointer"
-        name={user.name}
-        src={user.pic}
-      />
-      <Box>
-        <Text>{user.name}</Text>
-        <Text fontSize="xs">
-          <b>Email : </b>
-          {user.email}
-        </Text>
-      </Box>
-    </Box>
+      {user.name}
+      {admin === user._id && <span> (Admin)</span>}
+      <CloseIcon pl={1} />
+    </Badge>
   );
 };
 
-export default UserListItem;
+export default UserBadgeItem;
