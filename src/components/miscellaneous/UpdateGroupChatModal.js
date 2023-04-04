@@ -24,7 +24,7 @@ import {
 import { ViewIcon } from "@chakra-ui/icons";
   
   const UpdateGroupChatModal = ({ 
-    // fetchMessages,
+    fetchMessages,
      fetchAgain, setFetchAgain }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [groupChatName, setGroupChatName] = useState();
@@ -86,7 +86,7 @@ import { ViewIcon } from "@chakra-ui/icons";
         );
   
         // console.log(data._id);
-        // setSelectedChat("");
+        setSelectedChat("");
         setSelectedChat(data);
         setFetchAgain(!fetchAgain);
         setRenameLoading(false);
@@ -190,7 +190,7 @@ import { ViewIcon } from "@chakra-ui/icons";
   
         user1._id === user._id ? setSelectedChat() : setSelectedChat(data);
         setFetchAgain(!fetchAgain);
-        // fetchMessages();
+        fetchMessages();
         setLoading(false);
       } catch (error) {
         toast({
