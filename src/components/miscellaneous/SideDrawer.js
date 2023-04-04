@@ -26,11 +26,11 @@ import { useToast } from "@chakra-ui/toast";
 import ChatLoading from "../ChatLoading";
 import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
-// import NotificationBadge from "react-notification-badge";
-// import { Effect } from "react-notification-badge";
-// import { getSender } from "../../config/ChatLogics";
-import { ChatState } from "../../Context/ChatProvider";
+import NotificationBadge from "react-notification-badge";
+import { Effect } from "react-notification-badge";
+import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../UserAvatar/UserListItem";
+import { ChatState } from "../../Context/ChatProvider";
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -78,6 +78,7 @@ function SideDrawer() {
       };
 
       const { data } = await axios.get(`/api/user?search=${search}`, config);
+
       setLoading(false);
       setSearchResult(data);
     } catch (error) {
@@ -92,7 +93,8 @@ function SideDrawer() {
     }
   };
 
-  const accessChat = async (userId) => { 
+  const accessChat = async (userId) => {
+    console.log(userId);
 
     try {
       setLoadingChat(true);
@@ -134,7 +136,7 @@ function SideDrawer() {
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
             <i className="fas fa-search"></i>
-            <Text display={{ base: "none", md: "flex" }} px={4}>
+            <Text d={{ base: "none", md: "flex" }} px={4}>
               Search User
             </Text>
           </Button>
@@ -143,7 +145,7 @@ function SideDrawer() {
           Talk-A-Tive
         </Text>
         <div>
-          {/* <Menu>
+          <Menu>
             <MenuButton p={1}>
               <NotificationBadge
                 count={notification.length}
@@ -151,7 +153,7 @@ function SideDrawer() {
               />
               <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
-            <MenuList paddingLeft={2}>
+            <MenuList pl={2}>
               {!notification.length && "No New Messages"}
               {notification.map((notif) => (
                 <MenuItem
@@ -167,7 +169,7 @@ function SideDrawer() {
                 </MenuItem>
               ))}
             </MenuList>
-          </Menu> */}
+          </Menu>
           <Menu>
             <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
               <Avatar
@@ -193,7 +195,7 @@ function SideDrawer() {
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
           <DrawerBody>
-            <Box display="flex" pb={2}>
+            <Box d="flex" pb={2}>
               <Input
                 placeholder="Search by name or email"
                 mr={2}
@@ -202,19 +204,18 @@ function SideDrawer() {
               />
               <Button onClick={handleSearch}>Go</Button>
             </Box>
-            {
-              loading ? <ChatLoading /> : 
-               (
-                searchResult?.map((user) => (
-                  <UserListItem
-                    key={user._id}
-                    user={user}
-                    handleFunction={() => accessChat(user._id)}
-                  />
-                ))
-              )
-            }
-            {loadingChat && <Spinner ml="auto" display="flex" />}
+            {loading ? (
+              <ChatLoading />
+            ) : (
+              searchResult?.map((user) => (
+                <UserListItem
+                  key={user._id}
+                  user={user}
+                  handleFunction={() => accessChat(user._id)}
+                />
+              ))
+            )}
+            {loadingChat && <Spinner ml="auto" d="flex" />}
           </DrawerBody>
         </DrawerContent>
       </Drawer>
