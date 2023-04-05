@@ -30,7 +30,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -203,7 +203,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             p={3}
             bg="#E8E8E8"
             w="100%"
-            h="100%"
+            h="90%"
             borderRadius="lg"
             overflowY="hidden"
           >
