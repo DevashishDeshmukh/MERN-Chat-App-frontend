@@ -13,6 +13,7 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
+import "../../Pages/ChatPage.css"
 
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,6 +29,7 @@ const ProfileModal = ({ user, children }) => {
         <ModalOverlay />
         <ModalContent h="410px">
           <ModalHeader
+          id="ProfileModalHeadercss"
             fontSize="40px"
             fontFamily="Work sans"
             d="flex"
@@ -37,6 +39,7 @@ const ProfileModal = ({ user, children }) => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody
+          id="ProfileModalBodycss"
             d="flex"
             flexDir="column"
             alignItems="center"
@@ -55,7 +58,8 @@ const ProfileModal = ({ user, children }) => {
               Email: {user.email}
             </Text>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter
+           id="ProfileModalBodycss">
             <Button onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>

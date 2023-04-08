@@ -1,6 +1,7 @@
 import {
   Box,
   Container,
+  Flex,
   Tab,
   TabList,
   TabPanel,
@@ -12,6 +13,8 @@ import { useEffect } from "react";
 import { useHistory } from "react-router";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
+import './HomePage.css';
+import img1 from '../backD1.jpg'
 
 function Homepage() {
   const history = useHistory();
@@ -25,20 +28,24 @@ function Homepage() {
   return (
     <Container maxW="xl" centerContent>
       <Box
-        d="flex"
+        display="flex"
         justifyContent="center"
         p={3}
-        bg="white"
+        // bg="white"
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
+        id="Header"
       >
-        <Text fontSize="4xl" fontFamily="Work sans">
+        <Text   fontSize="4xl" fontFamily="Work sans">
           Talk-A-Tive
         </Text>
       </Box>
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px"
+      >
+        <div display={Flex} >
+      <img src={img1} alt="React Image" />
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
             <Tab>Login</Tab>
@@ -53,6 +60,7 @@ function Homepage() {
             </TabPanel>
           </TabPanels>
         </Tabs>
+        </div>
       </Box>
     </Container>
   );

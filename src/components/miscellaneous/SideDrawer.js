@@ -31,6 +31,7 @@ import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../UserAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
+import "../../Pages/ChatPage.css";
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -125,10 +126,11 @@ function SideDrawer() {
   return (
     <>
       <Box
+        id="Header1"
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        bg="white"
+        // bg="white"
         w="100%"
         p="5px 10px 5px 10px"
         borderWidth="5px"
@@ -141,7 +143,9 @@ function SideDrawer() {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans">
+        <Text fontSize="2xl" fontFamily="Work sans"
+        color="white"
+        >
           Talk-A-Tive
         </Text>
         <div>
@@ -190,11 +194,11 @@ function SideDrawer() {
         </div>
       </Box>
 
-      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+      <Drawer  placement="left" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Search Users</DrawerHeader>
-          <DrawerBody>
+          <DrawerHeader id="ChatDrawer" borderBottomWidth="1px">Search Users</DrawerHeader>
+          <DrawerBody id="DrawerBdy">
             <Box d="flex" pb={2}>
               <Input
                 placeholder="Search by name or email"

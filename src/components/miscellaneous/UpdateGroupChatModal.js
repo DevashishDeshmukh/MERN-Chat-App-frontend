@@ -22,6 +22,8 @@ import {
   import UserBadgeItem from "../UserAvatar/UserBadgeItem";
   import UserListItem from "../UserAvatar/UserListItem";
 import { ViewIcon } from "@chakra-ui/icons";
+import "../../Pages/ChatPage.css"
+
   
   const UpdateGroupChatModal = ({ 
     fetchMessages,
@@ -212,8 +214,9 @@ import { ViewIcon } from "@chakra-ui/icons";
   
         <Modal onClose={onClose} isOpen={isOpen} isCentered>
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent >
             <ModalHeader
+            id ="GroupChatModalHeaderCss"
               fontSize="35px"
               fontFamily="Work sans"
               d="flex"
@@ -223,7 +226,9 @@ import { ViewIcon } from "@chakra-ui/icons";
             </ModalHeader>
   
             <ModalCloseButton />
-            <ModalBody d="flex" flexDir="column" alignItems="center">
+            <ModalBody
+            id="GroupChatModalBodyCss"
+             d="flex" flexDir="column" alignItems="center">
               <Box w="100%" d="flex" flexWrap="wrap" pb={3}>
                 {selectedChat.users.map((u) => (
                   <UserBadgeItem
@@ -271,7 +276,9 @@ import { ViewIcon } from "@chakra-ui/icons";
                 ))
               )}
             </ModalBody>
-            <ModalFooter>
+            <ModalFooter
+            id="GroupChatModalBodyCss"
+            >
               <Button onClick={() => handleRemove(user)} colorScheme="red">
                 Leave Group
               </Button>

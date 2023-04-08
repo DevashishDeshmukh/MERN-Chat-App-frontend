@@ -182,6 +182,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <>
                   {getSender(user, selectedChat.users)}
                   <ProfileModal
+                  id="ModalCssOnChatPage"
                     user={getSenderFull(user, selectedChat.users)}
                   />
                 </>
@@ -189,6 +190,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 <>
                   {selectedChat.chatName.toUpperCase()}
                   <UpdateGroupChatModal
+                  id="ModalCssOnChatPage"
                     fetchMessages={fetchMessages}
                     fetchAgain={fetchAgain}
                     setFetchAgain={setFetchAgain}
@@ -197,11 +199,12 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               ))}
           </Text>
           <Box
+           id ="chatBoxBackground"
             display="flex"
             flexDir="column"
             justifyContent="flex-end"
             p={3}
-            bg="#E8E8E8"
+            // bg="#E8E8E8"
             w="100%"
             h="90%"
             borderRadius="lg"

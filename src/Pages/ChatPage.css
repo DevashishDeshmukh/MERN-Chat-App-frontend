@@ -1,0 +1,95 @@
+/* chat page navbar css for sidebar file which is in miscellaneous folder*/
+#Header1{
+    /* background-color: #0E8388; */
+    background-color: #2b2d42;
+    color: #8d99ae;
+    
+}
+
+#ChatDrawer{
+    background-color: #2b2d42;
+    color: #8d99ae;
+
+}
+
+#DrawerBdy{
+    background-color: #8d99ae;
+}
+
+
+
+
+
+
+/* MyChats section css  */
+
+#MychatsBody{
+    background-color: #2b2d42;
+    
+}
+
+#MychatsHeader{
+    color: #8d99ae;
+
+}
+
+#MychatsInnerbody{
+    background-color: #2b2d42;
+}
+
+#newGrpChatButton{
+    background-color: #18587d;
+}
+
+#chatsTabs{
+    /* background-color: #8d99ae; */
+}
+
+
+
+
+
+/* ChatBox CSS */
+
+#chatBoxBorder{
+    background-color: #0b3954;
+    color: #8d99ae;
+}
+
+
+
+
+#chatBoxBackground{
+    background-color: #8d99ae;
+    color: #000;
+}
+
+/* GroupChatModal */
+
+#GroupChatModalHeaderCss{
+    background-color: #18587d;
+    color: #8d99ae;
+}
+
+
+
+#GroupChatModalBodyCss{
+    background-color: #8d99ae;
+    color: #000;
+}
+
+
+/* ProfileModalHeader */
+
+#ProfileModalHeadercss{
+    background-color: #18587d;
+    color: #8d99ae;
+
+}
+
+
+#ProfileModalBodycss{
+    background-color: #8d99ae;
+    color: #000;
+
+}
