@@ -49,7 +49,7 @@ function Homepage() {
       >
         <div id="logoBox"  >
       <img  width={"25%"} src={img1} alt="React Image" />
-      <Text fontSize="5xl" fontFamily="Work sans" marginLeft="20px" marginTop="20px"
+      <Text fontSize="6xl" fontFamily="Work sans" marginLeft="20px" marginTop="20px"
       fontWeight="600"
        >
           Chat-Bird
@@ -59,7 +59,7 @@ function Homepage() {
           <TabList
           color="white"
           mb="1em">
-            <Tab _selected_selected={{ color: 'white', bg: 'teal.500' }}>Login</Tab>
+            <Tab >Login</Tab>
             <Tab>Sign Up</Tab>
           </TabList>
           <TabPanels>
