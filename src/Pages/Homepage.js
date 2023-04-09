@@ -14,7 +14,7 @@ import { useHistory } from "react-router";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 import './HomePage.css';
-import img1 from '../backD1.jpg'
+import img1 from '../logo.png'
 
 function Homepage() {
   const history = useHistory();
@@ -27,7 +27,8 @@ function Homepage() {
 
   return (
     <Container maxW="xl" centerContent>
-      <Box
+      {/* <Box
+        id="HomePageHeader"
         display="flex"
         justifyContent="center"
         p={3}
@@ -36,19 +37,29 @@ function Homepage() {
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
-        id="Header"
+        
       >
-        <Text   fontSize="4xl" fontFamily="Work sans">
-          Talk-A-Tive
+       
+      </Box> */}
+      <Box 
+      id="HomePageFormsCSS" 
+      // bg="white"
+       w="100%" p={4} 
+       margin={"auto"} borderRadius="lg" borderWidth="1px"
+      >
+        <div id="logoBox"  >
+      <img  width={"25%"} src={img1} alt="React Image" />
+      <Text fontSize="5xl" fontFamily="Work sans" marginLeft="20px" marginTop="20px"
+      fontWeight="600"
+       >
+          Chat-Bird
         </Text>
-      </Box>
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px"
-      >
-        <div display={Flex} >
-      <img src={img1} alt="React Image" />
+      </div>
         <Tabs isFitted variant="soft-rounded">
-          <TabList mb="1em">
-            <Tab>Login</Tab>
+          <TabList
+          color="white"
+          mb="1em">
+            <Tab _selected_selected={{ color: 'white', bg: 'teal.500' }}>Login</Tab>
             <Tab>Sign Up</Tab>
           </TabList>
           <TabPanels>
@@ -60,7 +71,7 @@ function Homepage() {
             </TabPanel>
           </TabPanels>
         </Tabs>
-        </div>
+        {/* </div> */}
       </Box>
     </Container>
   );

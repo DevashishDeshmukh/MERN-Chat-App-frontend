@@ -1,23 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
- 
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap");
 
-.App{
-    min-height: 100vh;
-    display: flex;
-    background-image: url('./background.png');
-    background-image: url('./backD1.jpg');
-    background-size: cover;
-    background-position: center;
+.App {
+  min-height: 100vh;
+  display: flex;
+  /* background-image: url('./background.png'); */
+  background-image: url("./glass_effect.jpg");
+  background-size: cover;
+  background-color: #c9e6e6;
+  background-position: center;
+
+  background: rgb(229, 202, 253);
+  background: -moz-linear-gradient(
+    24deg,
+    rgba(229, 202, 253, 1) 0%,
+    rgba(41, 103, 201, 1) 44%,
+    rgba(61, 38, 155, 1) 92%,
+    rgba(52, 35, 147, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    24deg,
+    rgba(229, 202, 253, 1) 0%,
+    rgba(41, 103, 201, 1) 44%,
+    rgba(61, 38, 155, 1) 92%,
+    rgba(52, 35, 147, 1) 100%
+  );
+  background: linear-gradient(
+    24deg,
+    rgba(229, 202, 253, 1) 0%,
+    rgba(41, 103, 201, 1) 44%,
+    rgba(61, 38, 155, 1) 92%,
+    rgba(52, 35, 147, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e5cafd",endColorstr="#342393",GradientType=1);
 }
 
-::-webkit-scrollbar{
-    width: 0px;
+::-webkit-scrollbar {
+  width: 0px;
 }
 
-::-webkit-scrollbar-thumb{
-    background: rgba(136, 136, 136, 0.281);
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.281);
 }
 
-::-webkit-scrollbar-thumb:hover{
-    background: #555;
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

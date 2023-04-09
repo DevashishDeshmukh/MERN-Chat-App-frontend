@@ -1,3 +1,17 @@
-#Header{
-    background-color: #6369b7;
+#HomePageHeader{
+    background-color: #2b2d42;
+}
+
+#HomePageFormsCSS{
+    background-color: #7b9bd1 ;
+}
+
+#logoBox{
+    background-color: #010044;
+    color: #fff;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+
 }
