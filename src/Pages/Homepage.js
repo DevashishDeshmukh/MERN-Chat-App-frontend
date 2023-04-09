@@ -49,10 +49,10 @@ function Homepage() {
       >
         <div id="logoBox"  >
       <img  width={"25%"} src={img1} alt="React Image" />
-      <Text fontSize="6xl" fontFamily="Work sans" marginLeft="20px" marginTop="20px"
+      <Text fontSize="5xl" fontFamily="Work sans" marginLeft="10px" marginTop="20px"
       fontWeight="600"
        >
-          Chat-Bird
+          Chat-Sparrow
         </Text>
       </div>
         <Tabs isFitted variant="soft-rounded">

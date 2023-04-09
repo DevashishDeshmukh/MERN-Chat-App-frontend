@@ -32,6 +32,7 @@ import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../UserAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 import "../../Pages/ChatPage.css";
+import img1 from "../../logo.png"
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -133,7 +134,7 @@ function SideDrawer() {
         // bg="white"
         w="100%"
         p="5px 10px 5px 10px"
-        borderWidth="5px"
+        // borderWidth="5px"
       >
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
@@ -143,11 +144,14 @@ function SideDrawer() {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans"
+        <Box justifyContent="center" display="Flex" >
+        <img  width={"5%"} src={img1} alt="React Image" />
+        <Text id ="ChatPAgeTitleHeader" fontSize="3xl" fontFamily="Work sans"
         color="white"
-        >
-          Talk-A-Tive
+        
+        >Chat-Sparrow
         </Text>
+        </Box>
         <div>
           <Menu>
             <MenuButton p={1}>

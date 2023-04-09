@@ -16,6 +16,16 @@
     background-color: #8d99ae;
 }
 
+#ChatPAgeTitleHeader{
+    background-color: #010044;
+    padding-right: 15px;
+    padding-left: 10px;
+    
+}
+
+
+
+
 
 
 
@@ -38,7 +48,7 @@
 }
 
 #newGrpChatButton{
-    background-color: #18587d;
+    background-color: #010044;
 }
 
 #chatsTabs{
@@ -52,7 +62,7 @@
 /* ChatBox CSS */
 
 #chatBoxBorder{
-    background-color: #0b3954;
+    background-color: #010044;
     color: #8d99ae;
 }
 
@@ -93,3 +103,6 @@
     color: #000;
 
 }
+
+
+
